@@ -7,12 +7,22 @@ public class GrenadeBullet : MonoBehaviour
     public GameObject prefabExplosion;
     public float explosionRadius;
     public float explosionForce;
+    public int damage;
 
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(prefabExplosion, transform.position, transform.rotation);
         Destroy(gameObject);
         BlowObject();
+    }
+
+    private void DeliverDamage(Collider victim)
+    {
+        Health health = victim.GetComponent<Health>();
+        if (health != null)
+        {
+            health.TakeDamage(damage);
+        }
     }
 
     void BlowObject()
@@ -25,6 +35,7 @@ public class GrenadeBullet : MonoBehaviour
             {
                 rigibody.AddExplosionForce(explosionForce, transform.position, explosionRadius
                     , 10, ForceMode.Impulse);
+                DeliverDamage(affectedObjects[i]);
             }
         }
     }
