@@ -15,15 +15,30 @@ public class GunRaycaster : MonoBehaviour
         Ray aimingRay = new Ray(camera.transform.position, camera.transform.forward);
         if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
-            Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
+            //Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
+            // Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
+            ShowHitEffect(hitInfo);
             DeliveryDamage(hitInfo);
+        }
+    }
+
+    private void ShowHitEffect(RaycastHit hitInfo)
+    {
+        HitSurface hitSurface = hitInfo.collider.GetComponent<HitSurface>();
+        if (hitSurface != null)
+        {
+            GameObject effectPrefab = HitEffectManager.Instance.GetEffectPrefab(hitSurface.surfaceType);
+            if (effectPrefab != null)
+            {
+                Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
+                Instantiate(effectPrefab, hitInfo.point, effectRotation);
+            }
         }
     }
 
     private void DeliveryDamage(RaycastHit hitInfo)
     {
-        Health health = hitInfo.collider.GetComponent<Health>();
+        Health health = hitInfo.collider.GetComponentInParent<Health>();
 
         if (health != null)
         {

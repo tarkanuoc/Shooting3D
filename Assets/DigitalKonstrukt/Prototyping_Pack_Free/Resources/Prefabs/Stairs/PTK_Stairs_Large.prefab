@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33846154913976700}
   - component: {fileID: 23381898238351908}
   - component: {fileID: 64547372451363680}
+  - component: {fileID: 2758814606838265151}
   m_Layer: 0
   m_Name: PTK_Stairs_Large
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: bb8c7438a4ec94b458e043eea4341d0f, type: 3}
+--- !u!114 &2758814606838265151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708576523022976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af8bea8d90a9cd41ac2f59f80faa44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceType: 0

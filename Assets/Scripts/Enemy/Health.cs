@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int maxHP;
     public Animator anim;
+    public UnityEvent onDie;
 
     private int HP;
 
@@ -30,5 +32,6 @@ public class Health : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("Die");
+        onDie.Invoke();
     }
 }
