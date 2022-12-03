@@ -8772,6 +8772,21 @@ MonoBehaviour:
   agent: {fileID: 991373864}
   reachingRadius: 2
   health: {fileID: 991373862}
+--- !u!114 &991373866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991373857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458a749aa2cb672438c4f62feec7ce34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 991373859}
+  damage: 10
+  playerHealth: {fileID: 0}
 --- !u!1 &992769650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1078868141710040, guid: db58b1eda8133c84983d20108c13888e, type: 3}
@@ -10393,6 +10408,7 @@ GameObject:
   - component: {fileID: 1178597140}
   - component: {fileID: 1178597139}
   - component: {fileID: 1178597145}
+  - component: {fileID: 1178597146}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -10531,6 +10547,24 @@ MonoBehaviour:
   guns:
   - {fileID: 148057016}
   - {fileID: 1367374506}
+--- !u!114 &1178597146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178597138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe3b823f5659344088f1d4efdcc5ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 50
+  anim: {fileID: 0}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  agent: {fileID: 0}
 --- !u!1001 &1182411446
 PrefabInstance:
   m_ObjectHideFlags: 0
