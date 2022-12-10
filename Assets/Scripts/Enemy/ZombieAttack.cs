@@ -6,10 +6,11 @@ public class ZombieAttack : MonoBehaviour
 {
     public Animator anim;
     public int damage;
-    public Health playerHealth;
+    public PlayerHealth playerHealth;
 
     public void StartAttack()
     {
+        Debug.Log("=========== zombie attack");
         anim.SetBool("IsAttacking", true);
     }
 
