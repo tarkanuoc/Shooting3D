@@ -8,12 +8,23 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHP;
     public UnityEvent onDie;
-    
-    [SerializeField]private int _hp;
-    
+
+    public UnityEvent<int, int> onHealthChanged;
+
+    [SerializeField] private int _hp;
+
     private bool isDead => _hp <= 0;
 
-    public int Hp { get => _hp; set => _hp = value; }
+    public int Hp
+    {
+        get => _hp;
+        set
+        {
+            _hp = value;
+            onHealthChanged.Invoke(_hp, maxHP);
+        }
+
+    }
 
     private void Start()
     {
@@ -24,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
 
-        _hp -= damage;
+        Hp -= damage;
         if (isDead)
         {
             Die();
@@ -34,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("============ Player Die");
-      //  Time.timeScale = 0;
+        //  Time.timeScale = 0;
         onDie.Invoke();
     }
 }
