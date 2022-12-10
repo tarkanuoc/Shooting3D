@@ -10868,7 +10868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48e425d2ad4ab74fb013e40a9eba30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 50
+  maxHP: 500
   onDie:
     m_PersistentCalls:
       m_Calls: []
