@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     public UnityEvent onDie;
     public NavMeshAgent agent;
 
+    public EnemyHPBar enemyHPBar;
+
     private int _hp;
 
     private bool isDead => _hp <= 0;
@@ -27,6 +29,7 @@ public class Health : MonoBehaviour
         if (isDead) return;
 
         _hp -= damage;
+        enemyHPBar.UpdateHealthValue(_hp, maxHP);
         if (isDead)
         {
             Die();
@@ -38,6 +41,7 @@ public class Health : MonoBehaviour
         anim.SetTrigger("Die");
         onDie.Invoke();
         agent.isStopped = true;
+        enemyHPBar.HideHpBar();
        // agent.enabled = false;
     }
 }
