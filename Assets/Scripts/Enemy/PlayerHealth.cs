@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHP;
     public UnityEvent onDie;
     
-    private int _hp;
-
+    [SerializeField]private int _hp;
+    
     private bool isDead => _hp <= 0;
 
     public int Hp { get => _hp; set => _hp = value; }
