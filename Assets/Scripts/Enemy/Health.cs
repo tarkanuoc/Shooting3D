@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public int maxHP;
     public Animator anim;
     public UnityEvent onDie;
+    public UnityEvent onTakeDamage;
     public NavMeshAgent agent;
 
     public EnemyHPBar enemyHPBar;
@@ -30,6 +31,7 @@ public class Health : MonoBehaviour
 
         _hp -= damage;
         enemyHPBar.UpdateHealthValue(_hp, maxHP);
+        onTakeDamage.Invoke();
         if (isDead)
         {
             Die();

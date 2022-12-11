@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHP;
     public UnityEvent onDie;
+    public UnityEvent onTakeDamage;
 
     public UnityEvent<int, int> onHealthChanged;
 
@@ -36,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
 
         Hp -= damage;
+        onTakeDamage.Invoke();
         if (isDead)
         {
             Die();

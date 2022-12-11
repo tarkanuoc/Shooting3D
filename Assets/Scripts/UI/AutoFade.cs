@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class AutoFade : MonoBehaviour
 {
-    [SerializeField] private Image ImageScratch;
+   // [SerializeField] private Image ImageScratch;
 
     public float visibleDuration;
     public float fadingDuration;
+    public CanvasGroup group;
 
     private float _startTime;
 
     public void ShowScratch()
     {
         _startTime = Time.time;
-        SetAlpha(1f);
+        // SetAlpha(1f);
+        group.alpha = 1f;
         gameObject.SetActive(true);
     }
 
@@ -27,7 +29,8 @@ public class AutoFade : MonoBehaviour
         _elapsedTime -= visibleDuration;
         if (_elapsedTime < fadingDuration)
         {
-            SetAlpha(1f - _elapsedTime / fadingDuration);
+            // SetAlpha(1f - _elapsedTime / fadingDuration);
+            group.alpha = 1f - _elapsedTime / fadingDuration;
         }
         else
         {
@@ -35,12 +38,12 @@ public class AutoFade : MonoBehaviour
         }
     }
 
-    private void SetAlpha(float alpha)
-    {
-        Color _newColor = ImageScratch.color;
-        _newColor.a = alpha;
-        ImageScratch.color = _newColor;
-    }
+    //private void SetAlpha(float alpha)
+    //{
+    //    Color _newColor = ImageScratch.color;
+    //    _newColor.a = alpha;
+    //    ImageScratch.color = _newColor;
+    //}
 
     public void HideScratch()
     {

@@ -60,4 +60,10 @@ public class ZombieMovement : MonoBehaviour
             onDestinationReached.Invoke();
         }
     }
+
+    public void OnDie()
+    {
+        enabled = false;
+        agent.isStopped = true;
+    }
 }
