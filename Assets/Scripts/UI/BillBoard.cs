@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BillBoard : MonoBehaviour
 {
-    [SerializeField] private Camera _mainCamera;
+    private Camera _mainCamera;
 
     void Start()
     {
-       // _mainCamera = Camera.main;
+        _mainCamera = Player.Instance.MainCamera;
         LookTowardCamera();
     }
 

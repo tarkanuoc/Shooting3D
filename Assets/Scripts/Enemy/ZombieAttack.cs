@@ -6,7 +6,12 @@ public class ZombieAttack : MonoBehaviour
 {
     public Animator anim;
     public int damage;
-    public PlayerHealth playerHealth;
+    private PlayerHealth _playerHealth;
+
+    private void Start()
+    {
+        _playerHealth = Player.Instance.PlayerHealth;
+    }
 
     public void StartAttack()
     {
@@ -21,7 +26,7 @@ public class ZombieAttack : MonoBehaviour
 
     public void OnAttack(int index)
     {
-        playerHealth.TakeDamage(damage);
+        _playerHealth.TakeDamage(damage);
 
         switch (index)
         {

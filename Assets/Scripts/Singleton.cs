@@ -34,6 +34,6 @@ public class Singleton<T> : MonoBehaviour where T: MonoBehaviour
     {
         if (newInstance == null) return;
         _instance = newInstance;
-        DontDestroyOnLoad(_instance.transform.root);
+        //DontDestroyOnLoad(_instance.transform.root);
     }
 }

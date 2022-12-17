@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ZombieMovement : MonoBehaviour
 {
-    public Transform playerFoot;
+    private Transform _playerFoot;
     public Animator anim;
     public NavMeshAgent agent;
     public float reachingRadius;
@@ -28,15 +28,20 @@ public class ZombieMovement : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _playerFoot = Player.Instance.PlayerFoot;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, playerFoot.position);
+        float distance = Vector3.Distance(transform.position, _playerFoot.position);
         IsMoving = distance > reachingRadius;
         if (IsMoving)
         {
             agent.isStopped = false;
-            agent.SetDestination(playerFoot.position);
+            agent.SetDestination(_playerFoot.position);
             anim.SetBool("IsWalking", true);
         }
         else
