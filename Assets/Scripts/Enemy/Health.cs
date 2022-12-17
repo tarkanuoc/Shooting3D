@@ -44,6 +44,7 @@ public class Health : MonoBehaviour
         onDie.Invoke();
         agent.isStopped = true;
         enemyHPBar.HideHpBar();
+        ZombieManager.Instance.NotifyZombieKilled(this);
        // agent.enabled = false;
     }
 }
