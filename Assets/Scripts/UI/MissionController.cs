@@ -6,11 +6,13 @@ using UnityEngine;
 public class MissionController : MonoBehaviour
 {
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private Transform _exitDoor;
+    [SerializeField] private Gate _gate;
     public int requiredKill;
     public TextMeshProUGUI txtMission;
-
     private int currentKill;
-        
+    private bool _isPlayerExit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class MissionController : MonoBehaviour
     IEnumerator VerifyMissions()
     {
         yield return VerifyZombieKill();
+        yield return VerifyPlayerExit();
         _uiManager.OnMissionCompleted();
     }
 
@@ -30,6 +33,13 @@ public class MissionController : MonoBehaviour
         yield return new WaitUntil(() => currentKill >= requiredKill);
     }
 
+    IEnumerator VerifyPlayerExit()
+    {
+        txtMission.text = $"Find exit door";
+        _gate.onPlayerEnter.AddListener(OnPlayerExit);
+        yield return new WaitUntil(()=>_isPlayerExit);
+        _gate.onPlayerEnter.RemoveListener(OnPlayerExit);
+    }
 
     public void OnZombieKilled(GameObject zombie)
     {
@@ -37,5 +47,15 @@ public class MissionController : MonoBehaviour
         Debug.Log("======== current Killed = " + currentKill);
     }
 
-   
+    private void OnPlayerExit()
+    {
+        Debug.Log("=========== On Player Exit");
+        _isPlayerExit = true;
+    }
+
+    private bool IsPlayerExit()
+    {
+        float distance = Vector3.Distance(Player.Instance.PlayerFoot.position, _exitDoor.position);
+        return distance < 1f;
+    }
 }
