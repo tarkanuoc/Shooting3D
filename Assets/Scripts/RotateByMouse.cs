@@ -10,6 +10,8 @@ public class RotateByMouse : MonoBehaviour
     public float maxPitch;
     [SerializeField] private Transform cameraHolder;
     private float pitch;
+
+#if UNITY_EDITOR || UNITY_STANDLONE
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -27,7 +29,7 @@ public class RotateByMouse : MonoBehaviour
     void UpdateYaw()
     {
         var mouseX = Input.GetAxis("Mouse X");
-        var yaw = mouseX * angleYaw ;
+        var yaw = mouseX * angleYaw;
         transform.Rotate(0, yaw, 0);
     }
     // Update is called once per frame
@@ -37,4 +39,5 @@ public class RotateByMouse : MonoBehaviour
         UpdatePitch();
 
     }
+#endif
 }
