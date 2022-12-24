@@ -12,7 +12,7 @@ public class GunAmmo : MonoBehaviour
     public Shooting shooting;
 
     public AudioSource[] reloadingSound;
-    
+
     public int magSize;
 
     [SerializeField] private int _loadedAmo;
@@ -31,7 +31,7 @@ public class GunAmmo : MonoBehaviour
             }
             else
             {
-               // UnlockShooting();
+                // UnlockShooting();
             }
             Debug.Log("========= set ammo " + _loadedAmo);
         }
@@ -76,6 +76,7 @@ public class GunAmmo : MonoBehaviour
 
     public void Reload()
     {
+        if (isReloading || _loadedAmo >= magSize) return;
         anim.SetTrigger("Reload");
         LockShooting();
         isReloading = true;
