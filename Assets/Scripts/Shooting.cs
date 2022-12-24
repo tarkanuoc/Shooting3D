@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isLockedValue;
+    public bool IsLocked
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get => isLockedValue;
+        set 
+        {
+            isLockedValue = value;
+            enabled = !isLockedValue;
+        }
     }
 }

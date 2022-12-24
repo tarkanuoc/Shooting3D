@@ -16,7 +16,7 @@ public class GunAmmo : MonoBehaviour
     public int magSize;
 
     [SerializeField] private int _loadedAmo;
-    private bool isReloading;
+    public bool isReloading;
     public int LoadedAmo
     {
         get => _loadedAmo;
@@ -31,7 +31,7 @@ public class GunAmmo : MonoBehaviour
             }
             else
             {
-                UnlockShooting();
+               // UnlockShooting();
             }
             Debug.Log("========= set ammo " + _loadedAmo);
         }
@@ -44,7 +44,8 @@ public class GunAmmo : MonoBehaviour
 
     private void LockShooting()
     {
-        shooting.enabled = false;
+        //   shooting.enabled = false;
+        shooting.IsLocked = true;
     }
 
     private void UnlockShooting()
@@ -52,6 +53,7 @@ public class GunAmmo : MonoBehaviour
         Debug.Log("============= Unlock Shooting");
         Debug.Log("========== ammo = " + LoadedAmo);
         shooting.enabled = true;
+        shooting.IsLocked = false;
     }
 
     public void AddAmmo()
@@ -72,7 +74,7 @@ public class GunAmmo : MonoBehaviour
         Debug.Log("========== ammo = " + LoadedAmo);
     }
 
-    private void Reload()
+    public void Reload()
     {
         anim.SetTrigger("Reload");
         LockShooting();
@@ -90,14 +92,16 @@ public class GunAmmo : MonoBehaviour
         isReloading = false;
         AddAmmo();
     }
+       
 
     private void Update()
     {
         if (isReloading) return;
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
+       
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    Reload();
+        //}
 
         if (_loadedAmo <= 0)
         {
